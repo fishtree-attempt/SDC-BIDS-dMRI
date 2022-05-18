@@ -1,3 +1,8 @@
+> **ATTENTION** This is an experimental test of the [{sandpaper}](https://carpentries.github.io/sandpaper-docs) lesson infrastructure
+> with automated conversion via [the lesson transition script](https://github.com/data-lessons/lesson-transition/).
+> 
+> If anything seems off, please contact Zhian Kamvar [zkamvar@carpentries.org](mailto:zkamvar@carpentries.org)
+
 # Introduction to dMRI
 
 [![Build Status](https://github.com/carpentries-incubator/SDC-BIDS-dMRI/workflows/Build,%20test/badge.svg)](https://github.com/carpentries-incubator/SDC-BIDS-dMRI/actions?query=workflow%3A"Build%2C+test")
@@ -28,6 +33,7 @@ tools, to advanced machine learning and multivariate methods!
 ## About the Lesson
 
 This lesson teaches:
+
 - What diffusion Magnetic Resonance Imaging is
 - How dMRI data is organized within the BIDS framework
 - What the standard preprocessing steps in dMRI are
@@ -36,17 +42,17 @@ This lesson teaches:
 
 ## Episodes
 
-|   Topic  | Time | Episode | Question(s) |
-|:---------|:----:|:--------|:------------|
-| **Introduction to Diffusion MRI data** | 30 | [1 Introduction to Diffusion MRI data][episode01] | How is dMRI data represented?<br />What is diffusion weighting? |
-| **Preprocessing dMRI data** | 30 | [2 Preprocessing dMRI data][episode02] | What are the standard preprocessing steps?<br />How do we register with an anatomical image? |
-| **Local fiber orientation reconstruction** | 30 | [3 Local fiber orientation reconstruction][episode03] | What information can dMRI provide at the voxel level? |
-| | 30 | [3.1 Diffusion Tensor Imaging (DTI)][episode04] | What is diffusion tensor imaging?<br />What metrics can be derived from DTI? |
-| | 30 | [3.2 Constrained Spherical Deconvolution (CSD)][episode05] | What is Constrained Spherical Deconvolution (CSD)?<br />What does CSD offer compared to DTI? |
-| **Tractography** | 30 | [4 Tractography][episode06] | What information can dMRI provide at the long range level? |
-| | 30 | [4.1 Local tractography][episode07] | FIXME |
-| | 30 | [4.1.1 Deterministic tractography][episode08] | FIXME |
-| | 30 | [4.1.2 Probabilistic tractography][episode09] | Why do we need tractography algorithms beyond the deterministic ones?<br />How is probabilistic tractography different from deterministic tractography? |
+| Topic | Time | Episode | Question(s)                                                                  | 
+| :---- | :--: | :------ | :--------------------------------------------------------------------------- |
+| **Introduction to Diffusion MRI data**      | 30   | [1 Introduction to Diffusion MRI data][episode01]        | How is dMRI data represented?<br />What is diffusion weighting?                                                | 
+| **Preprocessing dMRI data**      | 30   | [2 Preprocessing dMRI data][episode02]        | What are the standard preprocessing steps?<br />How do we register with an anatomical image?                                   | 
+| **Local fiber orientation reconstruction**      | 30   | [3 Local fiber orientation reconstruction][episode03]        | What information can dMRI provide at the voxel level?                        | 
+|       | 30   | [3\.1 Diffusion Tensor Imaging (DTI)][episode04]        | What is diffusion tensor imaging?<br />What metrics can be derived from DTI?                                            | 
+|       | 30   | [3\.2 Constrained Spherical Deconvolution (CSD)][episode05]        | What is Constrained Spherical Deconvolution (CSD)?<br />What does CSD offer compared to DTI?                           | 
+| **Tractography**      | 30   | [4 Tractography][episode06]        | What information can dMRI provide at the long range level?                   | 
+|       | 30   | [4\.1 Local tractography][episode07]        | FIXME                                                                        | 
+|       | 30   | [4\.1.1 Deterministic tractography][episode08]        | FIXME                                                                        | 
+|       | 30   | [4\.1.2 Probabilistic tractography][episode09]        | Why do we need tractography algorithms beyond the deterministic ones?<br />How is probabilistic tractography different from deterministic tractography?        | 
 
 ## Contributing
 
@@ -61,16 +67,16 @@ Please see the current list of [issues][link_issues] for ideas for contributing 
 repository. For making your contribution, we use the GitHub flow, which is
 nicely explained in the chapter [Contributing to a Project](http://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) in Pro Git
 by Scott Chacon.
-Look for the tag ![good_first_issue](https://img.shields.io/badge/-good%20first%20issue-gold.svg). This indicates that the maintainers will welcome a pull request fixing this issue.
+Look for the tag ![good\_first\_issue](https://img.shields.io/badge/-good%20first%20issue-gold.svg). This indicates that the maintainers will welcome a pull request fixing this issue.
 
 ## Maintainer(s)
 
 Current maintainers of this lesson are
 
-* [Jason Kai][jason_kai]
-* [Olivia Stanley][olivia_stanley]
-* [Michael Joseph][michael_joseph]
-* [Jon Haitz Legarreta Gorroño][jon_legarreta]
+- [Jason Kai][jason_kai]
+- [Olivia Stanley][olivia_stanley]
+- [Michael Joseph][michael_joseph]
+- [Jon Haitz Legarreta Gorroño][jon_legarreta]
 
 ## Authors
 
@@ -87,12 +93,12 @@ the MIT license. For more information, see [LICENSE](LICENSE.md).
 
 To cite this lesson, please consult with [CITATION](CITATION)
 
-[create_slack_svg]: https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg
-[slack_heroku_invite]: https://swc-slack-invite.herokuapp.com
-[slack_channel_status]: https://img.shields.io/badge/Slack_Channel-neuroimaging-E01563.svg
-[slack_channel_url]: https://swcarpentry.slack.com/messages/CCJBHKCHZ
-[binder_svg]: https://mybinder.org/badge_logo.svg
-[binder_url]: https://mybinder.org/v2/gh/carpentries-incubator/SDC-BIDS-dMRI/main?urlpath=lab/tree/code
+[slack\_heroku\_invite]: https://swc-slack-invite.herokuapp.com
+[create\_slack\_svg]: https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg
+[slack\_channel\_url]: https://swcarpentry.slack.com/messages/CCJBHKCHZ
+[slack\_channel\_status]: https://img.shields.io/badge/Slack_Channel-neuroimaging-E01563.svg
+[binder\_url]: https://mybinder.org/v2/gh/carpentries-incubator/SDC-BIDS-dMRI/main?urlpath=lab/tree/code
+[binder\_svg]: https://mybinder.org/badge_logo.svg
 [episode01]: https://carpentries-incubator.github.io/SDC-BIDS-dMRI/introduction/index.html
 [episode02]: https://carpentries-incubator.github.io/SDC-BIDS-dMRI/preprocessing/index.html
 [episode03]: https://carpentries-incubator.github.io/SDC-BIDS-dMRI/local_orientation_reconstruction/index.html
@@ -103,8 +109,11 @@ To cite this lesson, please consult with [CITATION](CITATION)
 [episode08]: https://carpentries-incubator.github.io/SDC-BIDS-dMRI/deterministic_tractography/index.html
 [episode09]: https://carpentries-incubator.github.io/SDC-BIDS-dMRI/probabilistic_tractography/index.html
 [lesson-example]: https://carpentries.github.io/lesson-example
-[link_issues]: https://github.com/conp-pcno-training/SDC-BIDS-dMRI/issues
-[jason_kai]: https://github.com/kaitj
-[olivia_stanley]: https://github.com/ostanley
-[michael_joseph]: https://github.com/josephmje
-[jon_legarreta]: https://github.com/jhlegarreta
+[link\_issues]: https://github.com/conp-pcno-training/SDC-BIDS-dMRI/issues
+[jason\_kai]: https://github.com/kaitj
+[olivia\_stanley]: https://github.com/ostanley
+[michael\_joseph]: https://github.com/josephmje
+[jon\_legarreta]: https://github.com/jhlegarreta
+
+
+

@@ -1,20 +1,25 @@
 ---
-title: "Introduction to Diffusion MRI data"
+title: Introduction to Diffusion MRI data
 teaching: 20
 exercises: 5
-questions:
-- "How is dMRI data represented?"
-- "What is diffusion weighting?"
-objectives:
-- "Representation of diffusion data and associated gradients"
-- "Learn about diffusion gradients"
-keypoints:
-- "dMRI data is represented as a 4-dimensional image (x,y,z,diffusion directional sensitivity)"
-- "dMRI data is sensitive to a particular direction of diffusion motion. Due to this sensitivity, each volume of the 4D image is sensitive to a particular direction"
-start: true
+start: yes
 ---
 
-{% include base_path.html %}
+
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Representation of diffusion data and associated gradients
+- Learn about diffusion gradients
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- How is dMRI data represented?
+- What is diffusion weighting?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Diffusion Weighted Imaging (DWI)
 
@@ -32,17 +37,17 @@ lesson), the acquired images can provide measurements which are related to the
 microscopic changes and estimate white matter trajectories. Images with no
 diffusion weighting are also acquired as part of the acquisition protocol.
 
-![Diffusion along X, Y, and Z directions]({{ relative_root_path }}/fig/introduction/DiffusionDirections.png) \
+![](fig/introduction/DiffusionDirections.png){alt='Diffusion along X, Y, and Z directions'}   
 Diffusion along X, Y, and Z directions
 
-## b-values & b-vectors
+## b-values \& b-vectors
 
 In addition to the acquired diffusion images, two files are collected as part
 of the diffusion dataset. These files correspond to the gradient amplitude
 (b-values) and directions (b-vectors) of the diffusion measurement and are
 named with the extensions <code>.bval</code> and <code>.bvec</code>
 respectively. The b-value is the diffusion-sensitizing factor, and reflects the
-timing & strength of the gradients used to acquire the diffusion-weighted
+timing \& strength of the gradients used to acquire the diffusion-weighted
 images. The b-vector corresponds to the direction of the diffusion sensitivity.
 Together these two files define the diffusion MRI measurement as a set of
 gradient directions and corresponding amplitudes.
@@ -60,12 +65,11 @@ Below is a tree diagram showing the folder structure of a single MR subject and
 session within ds000221. This was obtained by using the bash command
 <code>tree<code>.
 
-~~~
+```bash
 tree '../data/ds000221'
-~~~
-{: .language-bash}
+```
 
-~~~
+```output
 ../data/ds000221
 ├── .bidsignore
 ├── CHANGES
@@ -120,8 +124,7 @@ tree '../data/ds000221'
     │    │    ├── sub-010002_ses-01_task-rest_acq-AP_run-01_bold.json
     │    │    └── sub-010002_ses-01_task-rest_acq-AP_run-01_bold.nii.gz
     └── ses-02/
-~~~
-{: .output}
+```
 
 ## Querying a BIDS Dataset
 
@@ -130,9 +133,9 @@ querying, summarizing and manipulating the BIDS folder structure. We will make
 use of `PyBIDS` to query the necessary files.
 
 Let's first pull the metadata from its associated JSON file using the
-<code>get_metadata()</code> function for the first run.
+<code>get\_metadata()</code> function for the first run.
 
-~~~
+```python
 import bids
 from bids.layout import BIDSLayout
 
@@ -141,19 +144,17 @@ from bids.layout import BIDSLayout
 bids.config.set_option('extension_initial_dot', True)
 
 layout = BIDSLayout("../data/ds000221", validate=False)
-~~~
-{: .language-python}
+```
 
 Now that we have a layout object, we can work with a BIDS dataset! Let's
 extract the metadata from the dataset.
 
-~~~
+```python
 dwi = layout.get(subject='010006', suffix='dwi', extension='nii.gz', return_type='file')[0]
 layout.get_metadata(dwi)
-~~~
-{: .language-python}
+```
 
-~~~
+```output
 {'EchoTime': 0.08,
  'EffectiveEchoSpacing': 0.000390001,
  'FlipAngle': 90,
@@ -168,8 +169,7 @@ layout.get_metadata(dwi)
  'PhaseEncodingDirection': 'j-',
  'RepetitionTime': 7,
  'TotalReadoutTime': 0.04914}
-~~~
-{: .output}
+```
 
 ## Diffusion Imaging in Python ([DIPY](https://dipy.org))
 
@@ -186,19 +186,18 @@ for processing and analysing diffusion MRI.
 ### Defining a measurement: <code>GradientTable</code>
 
 `DIPY` has a built-in function that allows us to read in <code>bval</code> and
-<code>bvec</code> files named <code>read_bvals_bvecs</code> under the
+<code>bvec</code> files named <code>read\_bvals\_bvecs</code> under the
 <code>dipy.io.gradients</code> module. Let's first grab the path to our
 gradient directions and amplitude files and load them into memory.
 
-~~~
+```python
 bvec = layout.get_bvec(dwi)
 bval = layout.get_bval(dwi)
-~~~
-{: .language-python}
+```
 
 Now that we have the necessary diffusion files, let's explore the data!
 
-~~~
+```python
 import numpy as np
 import nibabel as nib
 
@@ -207,19 +206,17 @@ import matplotlib.pyplot as plt
 
 data = nib.load(dwi).get_fdata()
 data.shape
-~~~
-{: .language-python}
+```
 
-~~~
+```output
 (128, 128, 88, 67)
-~~~
-{: .output}
+```
 
 We can see that the data is 4 dimensional. The 4th dimension represents the
 different diffusion directions we are sensitive to. Next, let's take a look at
 a slice.
 
-~~~
+```python
 x_slice = data[58, :, :, 0]
 y_slice = data[:, 58, :, 0]
 z_slice = data[:, :, 30, 0]
@@ -229,16 +226,15 @@ slices = [x_slice, y_slice, z_slice]
 fig, axes = plt.subplots(1, len(slices))
 for i, _slice in enumerate(slices):
     axes[i].imshow(_slice.T, cmap="gray", origin="lower")
-~~~
-{: .language-python}
+```
 
-![DWI slice]({{ relative_root_path }}/fig/introduction/dwi_slice.png)
+![](fig/introduction/dwi_slice.png){alt='DWI slice'}
 
 We can also see how the diffusion gradients are represented. This is plotted on
 a sphere, the further away from the center of the sphere, the stronger the
 diffusion gradient (increased sensitivity to diffusion).
 
-~~~
+```python
 bvec_txt = np.genfromtxt(bvec)
 
 fig = plt.figure()
@@ -246,10 +242,9 @@ ax = fig.add_subplot(111, projection='3d')
 ax.scatter(bvec_txt[0], bvec_txt[1], bvec_txt[2])
 
 plt.show()
-~~~
-{: .language-python}
+```
 
-![Diffusion gradient sphere]({{ relative_root_path }}/fig/introduction/diffusion_gradient.png)
+![](fig/introduction/diffusion_gradient.png){alt='Diffusion gradient sphere'}
 
 The files associated with the diffusion gradients need to converted to a
 <code>GradientTable</code> object to be used with `DIPY`. A
@@ -258,29 +253,27 @@ The files associated with the diffusion gradients need to converted to a
 <code>GradientTable</code> should be our the values for our gradient directions
 and amplitudes we read in.
 
-~~~
+```python
 from dipy.io.gradients import read_bvals_bvecs
 from dipy.core.gradients import gradient_table
 
 gt_bvals, gt_bvecs = read_bvals_bvecs(bval, bvec)
 gtab = gradient_table(gt_bvals, gt_bvecs)
-~~~
-{: .language-python}
+```
 
 We will need this gradient table later on to process our data and generate
 diffusion tensor images (DTI)!
 
-There is also a built-in function for gradient tables, <code>b0s_mask</code>
+There is also a built-in function for gradient tables, <code>b0s\_mask</code>
 that can be used to separate diffusion weighted measurements from non-diffusion
 weighted measurements ($b = 0 s/mm^2$). We will extract the vector
 corresponding to diffusion weighted measurements!
 
-~~~
+```python
 gtab.bvecs[~gtab.b0s_mask]
-~~~
-{: .language-python}
+```
 
-~~~
+```output
 array([[-2.51881e-02, -3.72268e-01,  9.27783e-01],
        [ 9.91276e-01, -1.05773e-01, -7.86433e-02],
        [-1.71007e-01, -5.00324e-01, -8.48783e-01],
@@ -341,20 +334,18 @@ array([[-2.51881e-02, -3.72268e-01,  9.27783e-01],
        [ 6.24656e-01, -3.42071e-01,  7.01992e-01],
        [-4.61411e-01, -8.64670e-01,  1.98612e-01],
        [ 8.68547e-01, -4.66754e-01, -1.66634e-01]])
-~~~
-{: .output}
+```
 
 It is also important to know where our diffusion weighting free measurements
 are as we need them for registration in our preprocessing, (our next notebook).
-<code>gtab.b0s_mask</code> shows that this is our first volume of our
+<code>gtab.b0s\_mask</code> shows that this is our first volume of our
 dataset.
 
-~~~
+```python
 gtab.b0s_mask
-~~~
-{: .language-python}
+```
 
-~~~
+```output
 array([ True, False, False, False, False, False, False, False, False,
        False, False,  True, False, False, False, False, False, False,
        False, False, False, False,  True, False, False, False, False,
@@ -363,24 +354,37 @@ array([ True, False, False, False, False, False, False, False, False,
        False, False, False, False, False, False, False, False, False,
        False,  True, False, False, False, False, False, False, False,
        False, False, False,  True])
-~~~
-{: .output}
+```
 
 In the next few notebooks, we will talk more about preprocessing the diffusion
 weighted images, reconstructing the diffusion tensor model, and reconstruction
 axonal trajectories via tractography.
 
-> ## Exercise 1
->
-> Get a list of **all** diffusion data in NIfTI file format
->
-> > ## Solution
-> >
-> > ~~~
-> > dwi_data = layout.get(suffix='dwi', extension='nii.gz', return_type='file')
-> > ~~~
-> > {: .language-python}
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-{% include links.md %}
+## Exercise 1
+
+Get a list of **all** diffusion data in NIfTI file format
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+dwi_data = layout.get(suffix='dwi', extension='nii.gz', return_type='file')
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- dMRI data is represented as a 4-dimensional image (x,y,z,diffusion directional sensitivity)
+- dMRI data is sensitive to a particular direction of diffusion motion. Due to this sensitivity, each volume of the 4D image is sensitive to a particular direction
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
