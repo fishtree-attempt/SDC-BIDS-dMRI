@@ -10,6 +10,9 @@
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/about.html</loc>
   </url>
   <url>
+    <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/aio.html</loc>
+  </url>
+  <url>
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/constrained_spherical_deconvolution.html</loc>
   </url>
   <url>
@@ -28,6 +31,9 @@
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/guide.html</loc>
   </url>
   <url>
+    <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/images.html</loc>
+  </url>
+  <url>
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/index.html</loc>
   </url>
   <url>
@@ -38,6 +44,9 @@
   </url>
   <url>
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/about.html</loc>
+  </url>
+  <url>
+    <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/aio.html</loc>
   </url>
   <url>
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/constrained_spherical_deconvolution.html</loc>
@@ -58,10 +67,19 @@
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/guide.html</loc>
   </url>
   <url>
+    <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/images.html</loc>
+  </url>
+  <url>
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/index.html</loc>
   </url>
   <url>
+    <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/local_orientation_reconstruction.html</loc>
@@ -88,7 +106,13 @@
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor/tractography.html</loc>
   </url>
   <url>
+    <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/instructor-notes.html</loc>
+  </url>
+  <url>
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/key-points.html</loc>
   </url>
   <url>
     <loc>https://fishtree-attempt.github.io/SDC-BIDS-dMRI/local_orientation_reconstruction.html</loc>
